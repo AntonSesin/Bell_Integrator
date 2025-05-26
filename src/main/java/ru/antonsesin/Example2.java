@@ -11,9 +11,6 @@ public class Example2 {
             System.out.println("Кратно 2");
         } else if (i % 3 == 0) {
             System.out.println("Кратно 3");
-        } else if (i % 4 == 0) {
-            System.out.println("Кратно 4");
         }
-
     }
 }

@@ -23,6 +23,6 @@ public class Example3 {
         do {
             j++;
             System.out.println(j);
-        } while (j==100);
+        } while (j<10);
     }
 }
