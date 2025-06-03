@@ -12,7 +12,7 @@ public class Example1 {
         int[] array = new int[20];
         Random random = new Random();
         for (int i = 0; i < array.length; i++) {
-            array[i] = random.nextInt(-50, 50);
+            array[i] = random.nextInt(-50, 51);
         }
         System.out.println(Arrays.toString(array));
 

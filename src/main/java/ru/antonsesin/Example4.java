@@ -8,4 +8,22 @@ public class Example4 {
             *   Ввод: "Hello World!"
             *   Вывод: 3*/
 
+    public static void main(String[] args) {
+        String text = "Hello World!";
+        System.out.println("Ввод: " + text);
+        System.out.println("Вывод: " + countVowels(text));
+
+    }
+
+    public static int countVowels(String text) {
+        text = text.toLowerCase();
+        int count = 0;
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                count++;
+            }
+        }
+        return count;
+    }
 }

@@ -1,5 +1,9 @@
 package ru.antonsesin;
 
+import java.util.Arrays;
+import java.util.Random;
+import java.util.Scanner;
+
 public class Example6 {
    /* Напишите программу на Java, которая создает двумерный массив NxM, наполняет его случайными значениями, после
    чего для каждого элемента массива вычисляет сумму его соседей (сверху, снизу, слева и справа) и сохраняет
@@ -27,4 +31,71 @@ public class Example6 {
         13 20 17
         12 21 14
 */
+
+    public static void main(String[] args) {
+        int N;
+        int M;
+        int[][] array;
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите размеры массива");
+        System.out.println("Введите количество строк:");
+        N = scanner.nextInt();
+        System.out.println("Введите количество столбцов:");
+        M = scanner.nextInt();
+        array = getArray(N, M);
+        System.out.println("Исходный массив:");
+        printArray(array);
+        int[][] arraySum = getNewArray(array, N, M);
+        System.out.println("Массив в суммами:");
+        printArray(arraySum);
+    }
+
+    public static int[][] getArray(int N, int M) {
+        int[][] array = new int[N][M];
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                array[i][j] = getRandom();
+            }
+        }
+        return array;
+    }
+
+    public static int[][] getNewArray(int[][] array, int N, int M) {
+        int sum = 0;
+        int[][] newArray = new int[N][M];
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                if (i > 0) {
+                    sum += array[i - 1][j];
+                }
+                if (i < array.length - 1) {
+                    sum += array[i + 1][j];
+                }
+                if (j > 0) {
+                    sum += array[i][j - 1];
+                }
+                if (j < array[i].length - 1) {
+                    sum += array[i][j + 1];
+                }
+                newArray[i][j] = sum;
+                sum = 0;
+            }
+        }
+        return newArray;
+    }
+
+    public static int getRandom() {
+        return (int) (Math.random() * 10);
+    }
+
+    public static void printArray(int[][] array) {
+        for (int[] ints : array) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
+            }
+            System.out.println();
+        }
+    }
 }

@@ -1,5 +1,8 @@
 package ru.antonsesin;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Example5 {
  /*   Напишите программу на Java, которая генерирует случайное целое число в диапазоне от 1 до 100 (включительно).
  Пользователь должен угадать это число. Программа должна давать пользователю подсказки "Слишком мало" или
@@ -14,4 +17,24 @@ public class Example5 {
 • Программа должна продолжать запрашивать ввод, пока число не будет угадано.
 • Программа должна вывести количество попыток в конце игры.*/
 
+    public static void main(String[] args) {
+        int count = 0;
+        boolean win = false;
+        Random random = new Random();
+        int i = random.nextInt(1, 101);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Игра началась. Отгадай число от 1 до 100");
+        while (!win) {
+            int x = scanner.nextInt();
+            if (i == x) {
+                win = true;
+            } else if (i < x) {
+                System.out.println("Слишком много");
+            } else {
+                System.out.println("Слишком мало");
+            }
+            count++;
+        }
+        System.out.println("Вы выйграли, количество попыток: " + count);
+    }
 }
